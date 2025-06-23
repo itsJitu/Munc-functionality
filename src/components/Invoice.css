@@ -1,0 +1,134 @@
+.genrate {
+    padding:0px 12px;
+}
+
+.customer-details {
+    background-color: white;
+    margin: 20px 100px;
+    border-radius: 5px;
+    padding: 1px 10px;
+}
+
+.select {
+    width: 100%;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    height: 30px;
+    color: gray;
+}
+.invoice-details{
+    margin-top: 30px;
+}
+
+
+.invoice-nos {
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.inv-div {
+    width: 100%;
+    color: gray;
+}
+
+.add-products {
+    margin-top: 10px;
+}
+
+.table{
+    width: 100%;
+}
+
+.table-row {
+    display: flex;
+    justify-content:space-between;
+    width: 99%;
+    padding: 10px 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(46, 133, 247);
+    color: white;
+}
+
+.notes {
+    margin-bottom: 0px;
+}
+
+.select-notes {
+    width: 100%;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    height: 100px;
+    color: gray;
+}
+
+.table-cont{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total-cont{
+    width: 100%;
+}
+
+.total-amount{
+    width: 300px;
+}
+
+.total-dis{
+    display: flex;
+    justify-content:flex-start;
+    gap: 80px;
+    margin-left: 25%;
+}
+
+.subtotal {
+    padding: 10px 40px;
+
+}
+
+.amount {
+    padding: 10px 40px;
+}
+
+.payment-info {
+    margin-top: 0px;
+}
+.select-due {
+    width: 48.5%;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    height: 30px;
+    color: gray;
+}
+
+.button{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+    padding: 0px 50px ;
+    gap: 10px;
+}
+
+.save {
+    color: rgb(46, 133, 247);
+    border-radius: 5px;
+    border: 1px solid rgb(46, 133, 247);
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.send {
+    background-color: rgb(46, 133, 247);
+    border-radius: 5px;
+    border: 1px solid rgb(46, 133, 247);
+    padding: 5px 10px;
+    text-decoration: none;
+    color:white;
+}
+
