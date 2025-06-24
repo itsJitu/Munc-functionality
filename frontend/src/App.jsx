@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Invoice from "./components/Invoice";
 import Quotations from "./components/Quotations";
-import Sales from "./components/Quotations";
+import Sales from "./components/Sales";
 import SalesOrder from "./components/SalesOrder";
 import First from "./components/First";
 import './App.css'

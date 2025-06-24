@@ -1,56 +1,54 @@
-import "./Invoice.css";
+import React from 'react'
 import { Link } from 'react-router-dom';
 
-
-function Invoice() {
+function SalesOrder() {
   return (
-
-      <div className="main">
+    <div className="main">
         <div className="genrate">
-          <p>Generate Invoices</p>
+          <p>Create Sales Order</p>
         </div>
 
-        {/* invoice details */}
+        {/* Quotations section */}
         <div className="customer-details">
           {/* select customer */}
-          <div>
+          {/* <div>
             <p> Select Customer </p>
             <select className="select"></select>
-          </div>
-
-          {/* Details */}
+          </div> */}
+{/* 
+          Details
           <div className="invoice-details">
-            <span>Invoice Details</span>
-          </div>
+            <span>Quotation Date</span>
+          </div> */}
+
+          
 
           <div className="invoice-nos">
-            {/* Nos.*/}
+            {/* Select customer */}
             <div className="inv-div">
-              <span>Invoice Nos.</span>
-                <input className="select" type="text"></input>
+              <span>Select Customer </span>
+                <select className="select" type="select"></select>
             </div >  
-              {/* Invoice Date */}
-               
-               <div className="inv-div">
-                <span>Invoice Date</span>
-                <input className="select" type="date"></input>
-               </div>
-           
+          </div>
+
+           <div className="invoice-details">
+            <span>Sales Details</span>
           </div>
 
         
           <div className="invoice-nos">
-              {/* Due Date */}
+              {/* salesman */}
+              
             <div className="inv-div">
-                <span>Due Date</span>
+                <span>Salesman</span>
+                <select className="
+                select" type="select"></select>
+            </div>
+            {/* Sales Date*/}
+            <div className="inv-div">
+                <span>Sales Date</span>
                 <input className="
                 select" type="date"></input>
-            </div>
-            {/* Reference No */}
-            <div className="inv-div">
-                <span>Reference Nos.</span>
-                <input className="
-                select" type="number"></input>
             </div>
 
           </div>
@@ -77,11 +75,11 @@ function Invoice() {
 
          <hr />
          <p style={{color:' rgb(46, 133, 247)'}}> + Add products</p>
-
+{/* 
          <div >
             <p className="notes">Notes</p>
             <textarea className="select-notes"type="text" placeholder="please review and approve the quotations."></textarea>
-         </div>
+         </div> */}
 
          {/* Bill details table */}
         <div className="table-cont">
@@ -125,14 +123,15 @@ function Invoice() {
 
          <hr />
 
-         {/* Payment info. */}
+       
+           {/* payment & paid  */}
          <div>
-            {/* payment & paid */}
+           
             <div className="payment-info">
                 <span>payment info.</span>
             </div>
-{/* 
-            <div className="payment-met">
+ 
+            {/* <div className="payment-met">
             <div className="pay-div">
                 <span>payment Method</span>
                 <input type="text" />
@@ -143,15 +142,17 @@ function Invoice() {
                 <br />
                 <input type="text" />
             </div>
-            </div> */}
+            </div>  */}
+
+            
 
               <div className="invoice-nos">
-            {/* Nos.*/}
+            
             <div className="inv-div">
               <span>Payment Method</span>
-                <input className="select" type="text"></input>
+                <select className="select" type="text"></select>
             </div >  
-              {/* Invoice Date */}
+              
                
                <div className="inv-div">
                 <span>paid Amount</span>
@@ -168,19 +169,19 @@ function Invoice() {
             </div>
 
          </div>
+         
 
          {/* save & send */}
 
          <div className="button">
-            <Link to="/Quotations" className="save"> Save as Draft</Link>
-             <Link to="/Quotations" className="send"> Send</Link>
+            <Link to="/" className="save"> Save as Draft</Link>
+             <Link to="/Sales" className="send"> Send</Link>
          </div>
 
           
         </div>
-      </div>
-    
-  );
+     </div>
+  )
 }
 
-export default Invoice;
+export default SalesOrder

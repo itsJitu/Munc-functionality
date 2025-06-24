@@ -1,0 +1,52 @@
+.sale {
+    padding: 20px 30px;
+ 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.cost {
+    justify-content: space-between;
+    display: flex;
+}
+
+.name {
+    height: 30px;
+    width: 75%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.days {
+    height: 30px;
+    width: 10%;
+    border: 1px solid gray;;
+    border-radius: 5px ;
+    
+}
+
+.table-fix {
+    background-color: red;
+}
+
+.t-head{
+    display: flex;
+    width: 100%;
+}
+
+.table-raw {
+    color: white;
+    background-color: rgb(46, 133, 247);
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-details {
+    display: flex;
+    justify-content: space-between;
+}
