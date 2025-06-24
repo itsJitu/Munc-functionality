@@ -1,8 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const addproductRoutes = require("./routes/addproduct.routes");
 const app = express();
 const PORT = 8080;
+
+
+//cors
+const corsOptions = {
+    origin : "http://localhost:5173",
+    methods: "GET , POST , PUT , DELETE ,PATCH, HEAD",
+    Credential:true,
+};
 
 //mongodb
 mongoose
@@ -14,7 +23,7 @@ mongoose
 
 //for json datatype
 app.use(express.json());
-
+app.use(cors(corsOptions));
 //Api
 app.use("/api", addproductRoutes);
 
