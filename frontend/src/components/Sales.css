@@ -8,9 +8,28 @@
   margin-bottom: 15px;
 }
 
+.icon-link {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 2px;
+}
+
+.pluse-icon {
+  justify-content: space-between;
+  display: flex;
+  padding: 10px 10px;
+  text-decoration: none;
+  text-align: center;
+  background-color: rgb(46, 133, 247);
+  color: white;
+  border-radius: 5px;
+  gap: 5px;
+}
+
 .cost {
   justify-content: space-between;
   display: flex;
+  margin-bottom: 10px;
 }
 
 .name {
@@ -28,23 +47,28 @@
   border-radius: 5px;
 }
 
-.table-fix {
-  background-color: red;
-}
-
-.t-head {
-  display: flex;
+.te {
+  border-collapse: collapse;
   width: 100%;
 }
 
-.table-raw {
-  color: white;
-  background-color: rgb(46, 133, 247);
-  display: flex;
-  justify-content: space-between;
-}
 
 .table-details {
   display: flex;
   justify-content: space-between;
+  border-top-left-radius: 50px 20px;
+}
+
+.tr-head{
+    border-radius: 10px;
+}
+
+.table-rose {
+    background-color: rgb(46, 133, 247);
+    color: white;
+    text-align: left;
+}
+
+.t-row {
+  background-color:white;
 }
