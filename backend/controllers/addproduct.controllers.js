@@ -9,6 +9,7 @@ const addproduct = async (req, res) => {
     message: "product added",
   });
 };
+
 const getproduct = async (req, res) => {
   try {
     const data = await addproductModel.find();

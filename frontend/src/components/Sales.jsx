@@ -66,8 +66,12 @@ function Sales() {
       {/* Filters */}
       <div className="cost">
         <select className="name">
-          <option>Aman Kumar - Rajendra Chowk</option>
+         {invoiceData.map((supplier) => (
+          
+          <option>{supplier.invoiceno} - {supplier.productName}</option>
+        ))};
         </select>
+
         <select className="days">
           <option>Last 7 Days</option>
         </select>
@@ -96,9 +100,9 @@ function Sales() {
     {invoiceData.map((supplier) => (
       <tr key={supplier._id || supplier.id} className="t-row">
         <td  style={{padding:"10px 20px"}}><input type="checkbox" />
-        {supplier.invoiceid}</td>
-        <td>{supplier.productname}</td>
-        <td>{supplier.customer}</td>
+        {supplier.invoiceno}</td>
+        <td>{supplier.productName}</td>
+        <td>{supplier.invoiceno}</td>
         <td>{supplier.orderDate}</td>
         <td>₹{supplier.totalamount?.toFixed(2)}</td>
         <td>
@@ -106,7 +110,7 @@ function Sales() {
             {supplier.status}
           </span>
         </td>
-        <td>₹{supplier.dueamout?.toFixed(2)}</td>
+        <td>₹{supplier.dueAmount?.toFixed(2)}</td>
         <td>{supplier.duedate}</td>
         <td>
           <span

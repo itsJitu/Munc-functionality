@@ -16,7 +16,7 @@ const corsOptions = {
 //mongodb
 mongoose
   .connect(
-    "mongodb+srv://diwakarkumar9451:q25VWZnOQD6z7ea1@cluster0.cbg1gqz.mongodb.net/test"
+    "mongodb+srv://diwakarkumar9451:q25VWZnOQD6z7ea1@cluster0.cbg1gqz.mongodb.net/munc"
   )
   .then(() => console.log("database connected successfully"))
   .catch((error) => console.log(`${error}`));

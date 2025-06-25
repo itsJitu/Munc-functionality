@@ -2,36 +2,42 @@ const mongoose = require("mongoose");
 
 const addproductSchema = mongoose.Schema(
   {
-    invoiceid: {
+    invoiceno: {
       type: String,
     },
-    productname: {
+    invoicedate: {
+      type: Date,
+    },
+    invoiceDueDate: {
+      type: Date,
+    },
+    invoiceRef: {
+      type: Number,
+    },
+    notes: {
+      type: String,
+    },
+    PayMethod: {
+      type: String,
+    },
+    payAmout: {
+      type: Number,
+    },
+    dueAmount: {
+      type: Number,
+    },
+    productName: {
       type: String,
     },
     customer: {
       type: String,
-    },
-    orderDate: {
-      type: String,
-    },
-    totalamount: {
-      type: Number,
-    },
-    status: {
-      type: String,
-    },
-    dueamout: {
-      type: Number,
-    },
-    duedate: {
-      type: String,
-    },
+    }
   },
   {
     timestamps: true,
   }
 );
 
-const addproductModel = mongoose.model("product", addproductSchema);
+const addproductModel = mongoose.model("invoice", addproductSchema);
 
 module.exports = addproductModel;
