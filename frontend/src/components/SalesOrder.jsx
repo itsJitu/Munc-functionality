@@ -10,6 +10,7 @@ function SalesOrder() {
 
   const [salesPersonData, setsalesPersonData] = useState([]);
   const [salesPerson, setsalesPerson] = useState("");
+  const [PayMethod, setPayMethod] = useState("");
 
   useEffect(() => {
     const fetchproductsData = async () => {
@@ -76,27 +77,25 @@ function SalesOrder() {
     const tax = Number(item.tax) || 0;
     const discount = Number(item.discount) || 0;
 
-    const itemTotal = (quantity * price + quantity * tax) - (quantity * discount);
+    const itemTotal = quantity * price + quantity * tax - quantity * discount;
 
     return sum + itemTotal;
   }, 0);
 
-  
   const tax = produtsData.reduce((sum, item) => {
     const quantity = Number(item.quantity) || 0;
     const tax = Number(item.tax) || 0;
 
-    const totaltax = (quantity * tax);
+    const totaltax = quantity * tax;
 
     return sum + totaltax;
   }, 0);
 
-  
   const totaldiscount = produtsData.reduce((sum, item) => {
     const quantity = Number(item.quantity) || 0;
     const discount = Number(item.discount) || 0;
 
-    const totaldis = (quantity * discount);
+    const totaldis = quantity * discount;
 
     return sum + totaldis;
   }, 0);
@@ -109,17 +108,6 @@ function SalesOrder() {
 
       {/* Quotations section */}
       <div className="customer-details">
-        {/* select customer */}
-        {/* <div>
-            <p> Select Customer </p>
-            <select className="select"></select>
-          </div> */}
-        {/* 
-          Details
-          <div className="invoice-details">
-            <span>Quotation Date</span>
-          </div> */}
-
         <div className="invoice-nos">
           {/* Select customer */}
           <div className="inv-div">
@@ -176,56 +164,74 @@ function SalesOrder() {
         </div>
 
         {/* products Details */}
-        {/* Table */}
-        <table className="te">
-          <thead className="tr-head">
-            <tr className="table-rose">
-              <th style={{ padding: "10px 30px", borderTopLeftRadius: "10px" }}>
-                Product Name
-              </th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Tax</th>
-              <th>Discount</th>
-              <th>Total Amount</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {produtsData.map((supplier) => (
-              <tr key={supplier._id || supplier.id} className="t-row">
-                <td style={{ padding: "10px 20px" }}>
-                  <input type="checkbox" />
-                  {supplier.products}
-                  <br></br> <span> {supplier.title}</span>
-                </td>
-                <td>{supplier.quantity} pcs</td>
-                <td>${supplier.price}</td>
-                <td>${supplier.tax}</td>
-                <td>{supplier.discount}</td>
-                <td>
-                  $
-                  {supplier.quantity * supplier.price +
-                    supplier.quantity * supplier.tax -
-                    supplier.quantity * supplier.discount}
-                </td>
+        <div className="db-table">
+          <table className="te">
+            <thead className="tr-head">
+              <tr className="table-rose">
+                <th
+                  style={{ padding: "10px 30px", borderTopLeftRadius: "10px" }}
+                >
+                  Product Name
+                </th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Tax</th>
+                <th>Discount</th>
+                <th style={{ borderTopRightRadius: "10px" }}>Total Amount</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {produtsData.map((supplier) => (
+                <tr
+                  key={supplier._id || supplier.id}
+                  style={{ borderBottom: "1px solid gray" }}
+                >
+                  <td style={{ padding: "10px 20px", display: "flex" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        padding: "5px",
+                      }}
+                    >
+                      <input type="checkbox" />
+                    </div>
 
-        <hr />
-        <p style={{ color: " rgb(46, 133, 247)" }}> + Add products</p>
-        {/* 
-         <div >
-            <p className="notes">Notes</p>
-            <textarea className="select-notes"type="text" placeholder="please review and approve the quotations."></textarea>
-         </div> */}
+                    <div>
+                      <span style={{ color: "rgb(0, 122, 255)" }}>
+                        {supplier.products}
+                      </span>
+
+                      <br></br>
+                      <span style={{ color: "gray", fontSize: "15px" }}>
+                        ({supplier.title})
+                      </span>
+                    </div>
+                  </td>
+                  <td>{supplier.quantity} pcs</td>
+                  <td>${supplier.price}</td>
+                  <td>${supplier.tax}</td>
+                  <td>{supplier.discount}</td>
+                  <td>
+                    $
+                    {supplier.quantity * supplier.price +
+                      supplier.quantity * supplier.tax -
+                      supplier.quantity * supplier.discount}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p style={{ color: " rgb(24, 138, 169)" }}> + Add products</p>
 
         {/* Bill details table */}
         <div className="table-cont">
           <table>
             <thead className="bill-details">
+              {/*Sub Total */}
+
               <tr>
                 <td
                   className="subtotal"
@@ -237,6 +243,8 @@ function SalesOrder() {
                   {subtotal}
                 </td>
               </tr>
+
+              {/* Total Discount */}
 
               <tr>
                 <td
@@ -250,6 +258,7 @@ function SalesOrder() {
                 </td>
               </tr>
 
+              {/* Total Tax */}
               <tr>
                 <td
                   className="subtotal"
@@ -288,23 +297,22 @@ function SalesOrder() {
             <span>payment info.</span>
           </div>
 
-          {/* <div className="payment-met">
-            <div className="pay-div">
-                <span>payment Method</span>
-                <input type="text" />
-            </div>
-
-            <div>    
-                <span>paid Amount</span>
-                <br />
-                <input type="text" />
-            </div>
-            </div>  */}
-
           <div className="invoice-nos">
             <div className="inv-div">
               <span>Payment Method</span>
-              <select className="select" type="text"></select>
+              <select
+                className="select"
+                value={PayMethod}
+                onChange={(e) => setPayMethod(e.target.value)}
+              >
+                <option value="" disabled>
+                  --Select Payment Method--
+                </option>
+                <option>Cash</option>
+                <option>Online-Payment</option>
+                <option>Credit-Card</option>
+                <option>Debit-Card</option>
+              </select>
             </div>
 
             <div className="inv-div">
@@ -321,6 +329,11 @@ function SalesOrder() {
           </div>
         </div>
 
+        <div className="genrate-checkbox">
+          <input type="checkbox" />
+          <span>Genrate Invoice</span>
+        </div>
+
         {/* save & send */}
 
         <div className="button">
@@ -328,7 +341,7 @@ function SalesOrder() {
             {" "}
             Save as Draft
           </Link>
-          <Link to="/Sales" className="send">
+          <Link to="/Invoice" className="send">
             {" "}
             Send
           </Link>

@@ -20,7 +20,6 @@
     margin-top: 30px;
 }
 
-
 .invoice-nos {
     display: flex;
     justify-items: center;
@@ -117,19 +116,123 @@
 }
 
 .save {
-    color: rgb(46, 133, 247);
+    color: rgb(24, 138, 169);
     border-radius: 5px;
-    border: 1px solid rgb(46, 133, 247);
+    border: 1px solid rgb(24, 138, 169);
     padding: 5px 10px;
     text-decoration: none;
 }
 
 .send {
-    background-color: rgb(46, 133, 247);
+    background-color: rgb(0, 122, 255);
     border-radius: 5px;
-    border: 1px solid rgb(46, 133, 247);
+    border: 1px solid rgb(0, 122, 255);
     padding: 5px 10px;
     text-decoration: none;
     color:white;
 }
+
+.sale {
+  padding: 20px 30px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.icon-link {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 2px;
+}
+
+.pluse-icon {
+  justify-content: space-between;
+  display: flex;
+  padding: 10px 10px;
+  text-decoration: none;
+  text-align: center;
+  background-color: rgb(46, 133, 247);
+  color: white;
+  border-radius: 5px;
+  gap: 5px;
+}
+
+.cost {
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.name {
+  height: 30px;
+  width: 75%;
+  border: 1px solid rgb(250, 250, 252);
+  border-radius: 5px;
+  background-color: white;
+}
+
+.days {
+  height: 30px;
+  width: 10%;
+  border: 1px solid rgb(250, 250, 252);
+  border-radius: 5px;
+}
+
+.te {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+.table-details {
+  display: flex;
+  justify-content: space-between;
+  border-top-left-radius: 50px 20px;
+}
+
+.tr-head{
+    border-radius: 10px;
+}
+
+.table-rose {
+    background-color: rgb(0, 122, 255);
+    color: white;
+    text-align: left;
+    border-top-right-radius: 10px;
+}
+
+.db-table {
+    
+    border-radius: 10px;
+
+}
+
+.completed {
+  color: green;
+  background-color: rgba(0, 128, 0, 0.092);
+  border-radius: 10px;
+  padding: 2px 10px;
+}
+
+.pending {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.074);
+  border-radius: 10px;
+  padding: 2px 10px;
+}
+
+.three-icon {
+  display: flex;
+  justify-content: space-around;
+  padding-right: 5px;
+}
+
+.genrate-checkbox {
+    padding: 20px 0px;
+    color: gray;
+}
+
 

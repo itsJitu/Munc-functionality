@@ -30,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/Invoice",
         element: <Invoice />
+      },
+      {
+        path: "/SalesOrder",
+        element: <SalesOrder />
       }
     ],
   }

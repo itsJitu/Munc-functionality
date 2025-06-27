@@ -1,94 +1,19 @@
-.sale {
-  padding: 20px 30px;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-
-.icon-link {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 2px;
-}
-
-.pluse-icon {
-  justify-content: space-between;
-  display: flex;
-  padding: 10px 10px;
-  text-decoration: none;
-  text-align: center;
-  background-color: rgb(46, 133, 247);
-  color: white;
-  border-radius: 5px;
-  gap: 5px;
-}
-
-.cost {
-  justify-content: space-between;
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.name {
-  height: 30px;
-  width: 75%;
-  border: 1px solid gray;
-  border-radius: 5px;
+.page-btn {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
   background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.days {
-  height: 30px;
-  width: 10%;
-  border: 1px solid gray;
-  border-radius: 5px;
+.page-btn.active {
+  background-color: #4f46e5;
+  color: white;
+  font-weight: bold;
 }
 
-.te {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-
-.table-details {
-  display: flex;
-  justify-content: space-between;
-  border-top-left-radius: 50px 20px;
-}
-
-.tr-head{
-    border-radius: 10px;
-}
-
-.table-rose {
-    background-color: rgb(46, 133, 247);
-    color: white;
-    text-align: left;
-}
-
-.t-row {
-  background-color:white;
-}
-
-.completed {
-  color: green;
-  background-color: rgba(0, 128, 0, 0.092);
-  border-radius: 10px;
-  padding: 2px 10px;
-}
-
-.pending {
-  color: red;
-  background-color: rgba(255, 0, 0, 0.074);
-  border-radius: 10px;
-  padding: 2px 10px;
-}
-
-.three-icon {
-  display: flex;
-  justify-content: space-around;
-  padding-right: 5px;
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

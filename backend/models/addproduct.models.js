@@ -36,6 +36,9 @@ const addproductSchema = mongoose.Schema(
     },
     status: {
       type: String,
+    },
+    title: {
+      type: String,
     }
   },
   {

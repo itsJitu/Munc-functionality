@@ -9,7 +9,7 @@ const {
 
 
 routes.post("/addproduct", addproduct);
-routes.get("/addproduct", getproduct);
+routes.get("/getproduct", getproduct);
 
 
 module.exports = routes;
