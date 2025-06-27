@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Invoice.css";
 import { Link } from "react-router-dom";
 
 function Invoice() {
+  const [costumerData, setCostumerData] = useState([]);
+  const [customerName, setCustomerName] = useState("")
+
   const [invoiceno, setInvoiceno] = useState("");
   const [invoicedate, setInvoicedate] = useState("");
   const [invoiceDueDate, setInvoiceDueDate] = useState("");
@@ -12,7 +15,8 @@ function Invoice() {
   const [payAmout, setPaidAmount] = useState("");
   const [dueAmount, setDueAmount] = useState("");
   const [productName, setproductName] = useState("");
-
+  const [status, setStatus] = useState("");
+  
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -23,15 +27,17 @@ function Invoice() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          customerName,
           invoiceno,
-          invoicedate: Date(invoicedate),
-          invoiceDueDate: Date(invoiceDueDate),
+          invoicedate,
+          invoiceDueDate,
           invoiceRef: Number(invoiceRef),
           notes,
           PayMethod,
           payAmout: Number(payAmout),
           dueAmount: Number(dueAmount),
           productName,
+          status,
         }),
       });
 
@@ -47,6 +53,8 @@ function Invoice() {
         setPaidAmount("");
         setDueAmount("");
         setproductName("");
+        setCustomerName("");
+        setStatus("");
       } else {
         setMessage(data.error || "Error adding product");
       }
@@ -55,6 +63,22 @@ function Invoice() {
     }
   };
 
+   useEffect(() => {
+      const fetchCostumerData = async () => {
+        try {
+          const response = await fetch("http://localhost:8080/api/getcostumer");
+          if (!response.ok) {
+            throw new Error("Failed to fetch customer in data");
+          }
+          const datacustomer = await response.json();
+          setCostumerData(datacustomer);
+        } catch (err) {
+          setError(err.message);
+        }
+      };
+      fetchCostumerData();
+    }, []);
+  
   return (
     <div className="main">
       <form action="" onSubmit={handleSubmit}>
@@ -68,10 +92,17 @@ function Invoice() {
           {/* select customer */}
           <div>
             <p> Select Customer </p>
-            <select className="select">
-              <option value="Aman Kumar">Aman Kumar</option>
-              <option value="Rahul Raj">Rahul Raj</option>
-            </select>
+             <select
+  className="select"
+  value={customerName}
+  onChange={(e) => setCustomerName(e.target.value)}
+>
+  {costumerData.map((costumer) => (
+    <option key={costumer.id} value={costumer.customerFullName}>
+      {costumer.customerFullName}
+    </option>
+  ))}
+</select>
           </div>
 
           {/* Details */}
@@ -247,12 +278,16 @@ function Invoice() {
               {/* Payment Method*/}
               <div className="inv-div">
                 <span>Payment Method</span>
-                <input
+                <select
                   className="select"
-                  type="text"
                   value={PayMethod}
-                  onChange={(e) => setPayMethod(e.target.value)}
-                />
+                  onChange={(e) => setPayMethod(e.target.value)}>
+                    <option value="" disabled>--Select Payment Method--</option>
+                  <option>Cash</option>
+                  <option>Online-Payment</option>
+                  <option>Credit-Card</option>
+                  <option>Debit-Card</option>
+               </select>
               </div>
               {/* Invoice Date */}
 
@@ -283,12 +318,10 @@ function Invoice() {
           {/* save & send */}
 
           <div className="button">
-            <Link to="/Quotations" className="save">
-              {" "}
-              SalesOrder
-            </Link>
+            <button className="save">
+              Save as draft
+            </button>
             <button type="submit" className="send">
-              {" "}
               Send
             </button>
           </div>

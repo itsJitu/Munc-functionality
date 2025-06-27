@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 function Sales() {
   const [invoiceData, setInvoiceData] = useState([]);
+  const [costumerData, setCostumerData] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -15,7 +16,7 @@ function Sales() {
       try {
         const response = await fetch("http://localhost:8080/api/addproduct");
         if (!response.ok) {
-          throw new Error("Failed to fetch stock in data");
+          throw new Error("Failed to fetch invoice in data");
         }
         const data = await response.json();
         setInvoiceData(data);
@@ -26,29 +27,30 @@ function Sales() {
     fetchInvoiceData();
   }, []);
 
+  useEffect(() => {
+    const fetchCostumerData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/getcostumer");
+        if (!response.ok) {
+          throw new Error("Failed to fetch customer in data");
+        }
+        const datacustomer = await response.json();
+        setCostumerData(datacustomer);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+    fetchCostumerData();
+  }, []);
+
   const getStatusColor = (status) => {
     switch (status) {
-      case "Received":
-        return "approved";
+      case "Completed":
+        return "completed";
       case "Pending":
         return "pending";
-      case "Order":
-        return "rejected";
       default:
-        return "return";
-    }
-  };
-
-  const getPaymentStatusColor = (paymentStatus) => {
-    switch (paymentStatus) {
-      case "Paid":
-        return "fpaid";
-      case "Unpaid":
-        return "ppaid";
-      case "Overdue":
-        return "upaid";
-      default:
-        return "rpaid";
+        return "default";
     }
   };
 
@@ -66,9 +68,9 @@ function Sales() {
       {/* Filters */}
       <div className="cost">
         <select className="name">
-         {invoiceData.map((supplier) => (
+         {costumerData.map((costumer) => (
           
-          <option>{supplier.invoiceno} - {supplier.productName}</option>
+          <option>{costumer.customerFullName} - {costumer.CustomerAddress}</option>
         ))};
         </select>
 
@@ -102,16 +104,16 @@ function Sales() {
         <td  style={{padding:"10px 20px"}}><input type="checkbox" />
         {supplier.invoiceno}</td>
         <td>{supplier.productName}</td>
-        <td>{supplier.invoiceno}</td>
-        <td>{supplier.orderDate}</td>
-        <td>₹{supplier.totalamount?.toFixed(2)}</td>
+        <td>{supplier.customerName}</td>
+        <td>{supplier.invoicedate}</td>
+        <td>₹{supplier.payAmout + supplier.dueAmount}</td>
         <td>
           <span className={getStatusColor(supplier.status)}>
             {supplier.status}
           </span>
         </td>
         <td>₹{supplier.dueAmount?.toFixed(2)}</td>
-        <td>{supplier.duedate}</td>
+        <td>{supplier.invoiceDueDate}</td>
         <td>
           <span
             className="three-icon"
@@ -119,9 +121,9 @@ function Sales() {
           >
             {/* Icons like Edit/View can be added here */}
 
-            <td><IoIosPrint /></td>
-            <td><FaEye /></td>
-            <td><MdEdit /></td>
+            <IoIosPrint />
+            <FaEye />
+            <MdEdit />
           </span>
         </td>
       </tr>

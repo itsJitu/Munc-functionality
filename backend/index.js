@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const addproductRoutes = require("./routes/addproduct.routes");
+const addcostumerRoutes = require("./routes/costumer.routes");
+const addprodRoutes = require("./routes/addprod.routes");
+const addsalesPerson = require("./routes/salesPerson.routes")
 const app = express();
 const PORT = 8080;
 
@@ -24,8 +27,12 @@ mongoose
 //for json datatype
 app.use(express.json());
 app.use(cors(corsOptions));
+
 //Api
 app.use("/api", addproductRoutes);
+app.use("/api", addcostumerRoutes);
+app.use("/api", addprodRoutes);
+app.use("/api", addsalesPerson);
 
 app.listen(
   PORT,

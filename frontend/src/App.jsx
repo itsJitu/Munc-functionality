@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         index:true,
-        element: <Invoice />
+        element: <SalesOrder />
       },
       {
         path: "/Quotations",
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         element: <Sales />
       },
       {
-        path: "/SalesOrder",
-        element: <SalesOrder />
+        path: "/Invoice",
+        element: <Invoice />
       }
     ],
   }

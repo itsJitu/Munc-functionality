@@ -6,7 +6,10 @@ const {
   getproduct,
 } = require("../controllers/addproduct.controllers");
 
+
+
 routes.post("/addproduct", addproduct);
 routes.get("/addproduct", getproduct);
+
 
 module.exports = routes;

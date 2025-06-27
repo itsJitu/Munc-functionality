@@ -6,10 +6,12 @@ const addproductSchema = mongoose.Schema(
       type: String,
     },
     invoicedate: {
-      type: Date,
+      type: String,
     },
     invoiceDueDate: {
-      type: Date,
+      type: String,
+      required: false,
+      default: "--"
     },
     invoiceRef: {
       type: Number,
@@ -29,7 +31,10 @@ const addproductSchema = mongoose.Schema(
     productName: {
       type: String,
     },
-    customer: {
+    customerName: {
+      type: String,
+    },
+    status: {
       type: String,
     }
   },
