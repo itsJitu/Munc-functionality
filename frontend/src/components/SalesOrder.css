@@ -1,0 +1,325 @@
+/* Main container styles */
+.main {
+  padding: 20px 30px;
+}
+
+.genrate {
+  padding: 0px 12px;
+  margin-bottom: 20px;
+}
+
+.genrate p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* Customer details section */
+.customer-details {
+  background-color: white;
+  margin: 20px 100px;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form elements */
+.select {
+  width: 100%;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 5px;
+  height: 30px;
+  color: gray;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.select:focus {
+  outline: none;
+  border-color: rgb(0, 122, 255);
+}
+
+/* Invoice details section */
+.invoice-details {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.invoice-details span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Invoice numbers section */
+.invoice-nos {
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.inv-div {
+  width: 100%;
+  color: gray;
+}
+
+.inv-div span {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Add products section */
+.add-products {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.add-products span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Table styles */
+.db-table {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.te {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tr-head {
+  border-radius: 10px;
+}
+
+.table-rose {
+  background-color: rgb(0, 122, 255);
+  color: white;
+  text-align: left;
+  border-top-right-radius: 10px;
+}
+
+.table-rose th {
+  padding: 15px 10px;
+  font-weight: 600;
+}
+
+/* Table body */
+.te tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.te tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.te tbody td {
+  padding: 12px 10px;
+  vertical-align: middle;
+}
+
+/* Checkbox styling */
+.te input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+/* Product name styling */
+.te tbody td:first-child {
+  display: flex;
+  align-items: center;
+}
+
+/* Add products link */
+.add-products-link {
+  color: rgb(24, 138, 169);
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.add-products-link:hover {
+  text-decoration: underline;
+}
+
+/* Bill details table */
+.table-cont {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.table-cont table {
+  width: 300px;
+}
+
+.bill-details {
+  width: 100%;
+}
+
+.bill-details tr {
+  border-bottom: 1px solid #eee;
+}
+
+.subtotal {
+  padding: 10px 40px;
+  font-weight: 500;
+  color: #555;
+}
+
+.amount {
+  padding: 10px 40px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Total section */
+.total-cont {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+}
+
+.total-amount {
+  width: 300px;
+}
+
+.total-dis {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.total-dis span:first-child {
+  color: #333;
+}
+
+.total-dis span:last-child {
+  color: rgb(0, 122, 255);
+  font-size: 20px;
+}
+
+/* Payment info section */
+.payment-info {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.payment-info span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Due amount input */
+.select-due {
+  width: 48.5%;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 5px;
+  height: 30px;
+  color: gray;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.select-due:focus {
+  outline: none;
+  border-color: rgb(0, 122, 255);
+}
+
+/* Generate checkbox */
+.genrate-checkbox {
+  padding: 20px 0px;
+  color: gray;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.genrate-checkbox input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+/* Button section */
+.button {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+  padding: 0px 50px;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.save {
+  color: rgb(24, 138, 169);
+  border-radius: 5px;
+  border: 1px solid rgb(24, 138, 169);
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.save:hover {
+  background-color: rgb(24, 138, 169);
+  color: white;
+}
+
+.send {
+  background-color: rgb(0, 122, 255);
+  border-radius: 5px;
+  border: 1px solid rgb(0, 122, 255);
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.send:hover {
+  background-color: rgb(0, 100, 200);
+  border-color: rgb(0, 100, 200);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .customer-details {
+    margin: 20px 20px;
+    padding: 15px;
+  }
+  
+  .invoice-nos {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .button {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .total-dis {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

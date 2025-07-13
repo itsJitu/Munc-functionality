@@ -1,66 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import "./SalesOrder.css";
 
 function SalesOrder() {
-  const [produtsData, setproductsData] = useState([]);
+  // Mock data instead of backend calls
+  const [produtsData] = useState([
+    {
+      id: 1,
+      products: "Laptop",
+      title: "Dell XPS 13",
+      quantity: 2,
+      price: 1200,
+      tax: 60,
+      discount: 50
+    },
+    {
+      id: 2,
+      products: "Mouse",
+      title: "Wireless Mouse",
+      quantity: 5,
+      price: 25,
+      tax: 2.5,
+      discount: 5
+    }
+  ]);
 
-  const [costumerData, setCostumerData] = useState([]);
+  const [costumerData] = useState([
+    { id: 1, customerFullName: "John Doe" },
+    { id: 2, customerFullName: "Jane Smith" },
+    { id: 3, customerFullName: "Bob Johnson" }
+  ]);
   const [customerName, setCustomerName] = useState("");
 
-  const [salesPersonData, setsalesPersonData] = useState([]);
+  const [salesPersonData] = useState([
+    { id: 1, salesMan: "Alice Brown" },
+    { id: 2, salesMan: "Charlie Wilson" },
+    { id: 3, salesMan: "Diana Davis" }
+  ]);
   const [salesPerson, setsalesPerson] = useState("");
   const [PayMethod, setPayMethod] = useState("");
-
-  useEffect(() => {
-    const fetchproductsData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/getprod");
-        if (!response.ok) {
-          throw new Error("Failed to fetch products in data");
-        }
-        const dataproducts = await response.json();
-        setproductsData(dataproducts);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-    fetchproductsData();
-  }, []);
-
-  useEffect(() => {
-    const fetchCostumerData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/getcostumer");
-        if (!response.ok) {
-          throw new Error("Failed to fetch customer in data");
-        }
-        const datacustomer = await response.json();
-        setCostumerData(datacustomer);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-    fetchCostumerData();
-  }, []);
-
-  useEffect(() => {
-    const fetchsalesPerson = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:8080/api/getsalesPerson"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch salesman in data");
-        }
-        const datasalesman = await response.json();
-        setsalesPersonData(datasalesman);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-    fetchsalesPerson();
-  }, []);
 
   const subtotal = produtsData.reduce((sum, item) => {
     const quantity = Number(item.quantity) || 0;

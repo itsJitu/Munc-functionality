@@ -1,10 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Invoice.css";
 import { Link } from "react-router-dom";
 
 function Invoice() {
-  const [produtsData, setproductsData] = useState([]);
-  const [costumerData, setCostumerData] = useState([]);
+  // Mock data instead of backend calls
+  const [produtsData] = useState([
+    {
+      id: 1,
+      products: "Laptop",
+      title: "Dell XPS 13",
+      quantity: 2,
+      price: 1200,
+      tax: 60,
+      discount: 50
+    },
+    {
+      id: 2,
+      products: "Mouse",
+      title: "Wireless Mouse",
+      quantity: 5,
+      price: 25,
+      tax: 2.5,
+      discount: 5
+    }
+  ]);
+  
+  const [costumerData] = useState([
+    { id: 1, customerFullName: "John Doe" },
+    { id: 2, customerFullName: "Jane Smith" },
+    { id: 3, customerFullName: "Bob Johnson" }
+  ]);
   const [customerName, setCustomerName] = useState("");
 
   const [invoiceno, setInvoiceno] = useState("");
@@ -22,79 +47,20 @@ function Invoice() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("");
-    try {
-      const res = await fetch("http://localhost:8080/api/addproduct", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          customerName,
-          invoiceno,
-          invoicedate,
-          invoiceDueDate,
-          invoiceRef: Number(invoiceRef),
-          notes,
-          PayMethod,
-          payAmout: Number(payAmout),
-          dueAmount: Number(dueAmount),
-          productName,
-          status,
-        }),
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        setMessage("Product added successfully!");
-        setInvoiceno("");
-        setInvoicedate("");
-        setInvoiceDueDate("");
-        setInvoiceRef("");
-        setNotes("");
-        setPayMethod("");
-        setPaidAmount("");
-        setDueAmount("");
-        setproductName("");
-        setCustomerName("");
-        setStatus("");
-      } else {
-        setMessage(data.error || "Error adding product");
-      }
-    } catch (err) {
-      setMessage("Error: " + err.message);
-    }
+    setMessage("Invoice saved successfully!");
+    // Reset form fields
+    setInvoiceno("");
+    setInvoicedate("");
+    setInvoiceDueDate("");
+    setInvoiceRef("");
+    setNotes("");
+    setPayMethod("");
+    setPaidAmount("");
+    setDueAmount("");
+    setproductName("");
+    setCustomerName("");
+    setStatus("");
   };
-
-  useEffect(() => {
-    const fetchCostumerData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/getcostumer");
-        if (!response.ok) {
-          throw new Error("Failed to fetch customer in data");
-        }
-        const datacustomer = await response.json();
-        setCostumerData(datacustomer);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-    fetchCostumerData();
-  }, []);
-
-  useEffect(() => {
-    const fetchproductsData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/getprod");
-        if (!response.ok) {
-          throw new Error("Failed to fetch products in data");
-        }
-        const dataproducts = await response.json();
-        setproductsData(dataproducts);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-    fetchproductsData();
-  }, []);
 
   const subtotal = produtsData.reduce((sum, item) => {
     const quantity = Number(item.quantity) || 0;

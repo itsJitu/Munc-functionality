@@ -1,47 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import {useState, useEffect } from 'react';
+import {useState } from 'react';
+import "./Quotations.css";
 
 
 function Quotations() {
 
    
-     const [costumerData, setCostumerData] = useState([]);
+     const [costumerData] = useState([
+       { id: 1, customerFullName: "John Doe" },
+       { id: 2, customerFullName: "Jane Smith" },
+       { id: 3, customerFullName: "Bob Johnson" }
+     ]);
      const [customerName, setCustomerName] = useState("");
-     const [produtsData, setproductsData] = useState([]);
-
-     
-       useEffect(() => {
-         const fetchCostumerData = async () => {
-           try {
-             const response = await fetch("http://localhost:8080/api/getcostumer");
-             if (!response.ok) {
-               throw new Error("Failed to fetch customer in data");
-             }
-             const datacustomer = await response.json();
-             setCostumerData(datacustomer);
-           } catch (err) {
-             setError(err.message);
-           }
-         };
-         fetchCostumerData();
-       }, []);
-
-         useEffect(() => {
-        const fetchproductsData = async () => {
-          try {
-            const response = await fetch("http://localhost:8080/api/getprod");
-            if (!response.ok) {
-              throw new Error("Failed to fetch products in data");
-            }
-            const dataproducts = await response.json();
-            setproductsData(dataproducts);
-          } catch (err) {
-            setError(err.message);
-          }
-        };
-        fetchproductsData();
-      }, []);
+     const [produtsData] = useState([
+       {
+         id: 1,
+         products: "Laptop",
+         title: "Dell XPS 13",
+         quantity: 2,
+         price: 1200,
+         tax: 60,
+         discount: 50
+       },
+       {
+         id: 2,
+         products: "Mouse",
+         title: "Wireless Mouse",
+         quantity: 5,
+         price: 25,
+         tax: 2.5,
+         discount: 5
+       }
+     ]);
 
        const subtotal = produtsData.reduce((sum, item) => {
     const quantity = Number(item.quantity) || 0;
