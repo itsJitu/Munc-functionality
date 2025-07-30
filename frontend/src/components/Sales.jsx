@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Sales.css";
 import { LuSquarePlus } from "react-icons/lu";
 import { IoIosPrint } from "react-icons/io";
@@ -9,44 +9,40 @@ import { IoIosArrowBack } from "react-icons/io";
 import { MdArrowForwardIos } from "react-icons/md";
 
 function Sales() {
-  const [invoiceData, setInvoiceData] = useState([]);
-  const [costumerData, setCostumerData] = useState([]);
-  const [error, setError] = useState(null);
+  // Mock data instead of backend calls
+  const [invoiceData] = useState([
+    {
+      id: 1,
+      invoiceno: "INV-001",
+      productName: "Laptop",
+      customerName: "John Doe",
+      invoicedate: "2024-01-15",
+      payAmout: 1200,
+      dueAmount: 0,
+      status: "Completed",
+      invoiceDueDate: "2024-01-30"
+    },
+    {
+      id: 2,
+      invoiceno: "INV-002",
+      productName: "Mouse",
+      customerName: "Jane Smith",
+      invoicedate: "2024-01-16",
+      payAmout: 25,
+      dueAmount: 5,
+      status: "Pending",
+      invoiceDueDate: "2024-01-31"
+    }
+  ]);
+  
+  const [costumerData] = useState([
+    { id: 1, customerFullName: "John Doe", CustomerAddress: "123 Main St" },
+    { id: 2, customerFullName: "Jane Smith", CustomerAddress: "456 Oak Ave" },
+    { id: 3, customerFullName: "Bob Johnson", CustomerAddress: "789 Pine Rd" }
+  ]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-
-  useEffect(() => {
-    const fetchInvoiceData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/getproduct");
-        if (!response.ok) {
-          throw new Error("Failed to fetch invoice in data");
-        }
-        const data = await response.json();
-        setInvoiceData(data);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-    fetchInvoiceData();
-  }, []);
-
-  useEffect(() => {
-    const fetchCostumerData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/getcostumer");
-        if (!response.ok) {
-          throw new Error("Failed to fetch customer in data");
-        }
-        const datacustomer = await response.json();
-        setCostumerData(datacustomer);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-    fetchCostumerData();
-  }, []);
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -150,9 +146,6 @@ function Sales() {
         </tbody>
       </table>
       </div>
-
-      {/* Optional Error Display */}
-      {error && <p style={{ color: "red" }}>{error}</p>}
 
       {/* next Button */}
 {/* 
