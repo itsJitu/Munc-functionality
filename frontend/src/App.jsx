@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Quotations",
-        element: <Quotations />
+        element: <Quotations />        
       },
       {
         path: "/Sales",
